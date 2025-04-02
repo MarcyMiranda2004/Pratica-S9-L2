@@ -1,6 +1,6 @@
 import MyNav from './MyNav';
 
-function MyHeader() {
+const MyHeader = () => {
     return (
         <header className='mb-5'>
             <MyNav />

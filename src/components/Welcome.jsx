@@ -1,12 +1,16 @@
 import "bootstrap/dist/css/bootstrap.css";
-import { useEffect } from "react";
+import "../assets/css/Welcome.css"
 
-function Welcome() {
-  useEffect(() => {
-    alert("Benvenuto Nella Nostra Libreria !");
-  }); 
-
-  return <h2 className="text-center">I Nostri Libri:</h2>;
+const Welcome = () => {
+  return (
+    <> 
+    <div className="welcomeContainer p-2 w-25 mb-5 ">
+     <h1 className="text-center">Benvenuto Nella Nostra Libreria !</h1>
+    </div>
+  
+    <h2 className="text-center">I Nostri Libri:</h2>
+    </>
+  )
 }
 
 export default Welcome;
