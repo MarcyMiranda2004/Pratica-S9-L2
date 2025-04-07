@@ -30,7 +30,7 @@ class AddComment extends Component {
         fetch(CommentsUrl, {
             method: "POST",
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VlOGEyOTk0OTJlNDAwMTVlN2M2ZjQiLCJpYXQiOjE3NDM2ODYxODUsImV4cCI6MTc0NDg5NTc4NX0.1BBxF9QeQezyGSqI7tN8qblLiWRKNbCxrLxt-LQt45M",
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VlOGEyOTk0OTJlNDAwMTVlN2M2ZjQiLCJpYXQiOjE3NDM2ODYxODUsImV4cCI6MTc0NDg5NTc4NX0.1BBxF9QeQezyGSqI7tN8qblLiWRKNbCxrLxt-LQt45M", 
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(newComment)
@@ -43,7 +43,6 @@ class AddComment extends Component {
             }
         })
         .then((data) => {
-            console.log("Commento aggiunto con successo:", data);
             this.setState({
                 comment: '',
                 rating: 1,
@@ -52,7 +51,6 @@ class AddComment extends Component {
             });
         })
         .catch((err) => {
-            console.log("Errore:", err);
             this.setState({
                 successMessage: '',
                 errorMessage: "Errore durante l'invio del commento!"

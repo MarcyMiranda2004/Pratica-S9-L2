@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, ListGroup, Spinner, Alert } from 'react-bootstrap';
 
-
 class CommentArea extends Component {
     state = {
         commenti: [],
@@ -11,7 +10,6 @@ class CommentArea extends Component {
 
     getComments = () => {
         const CommentsUrl = `https://striveschool-api.herokuapp.com/api/comments/${this.props.asin}`;
-
 
         fetch(CommentsUrl, { 
             method: "GET",  
@@ -27,14 +25,12 @@ class CommentArea extends Component {
             }
         })
         .then((data) => {
-            console.log("Commenti", data);
             this.setState({
                 commenti: data,
                 isLoading: false
             });
         })
         .catch((err) => {
-            console.log("Errore:", err);
             this.setState({
                 isLoading: false,
                 isError: true,
@@ -46,6 +42,15 @@ class CommentArea extends Component {
         this.getComments();
     };
 
+    componentDidUpdate(prevProps) {
+        // Verifica se l'ASIN è cambiato, e ricarica i commenti
+        if (prevProps.asin !== this.props.asin) {
+            this.setState({ isLoading: true }, () => {
+                this.getComments();
+            });
+        }
+    }
+
     render() {
         return (
             <Container>
@@ -56,7 +61,7 @@ class CommentArea extends Component {
                     {this.state.commenti.length > 0 ? (
                         this.state.commenti.map((commento, index) => (
                             <ListGroup.Item key={index}>
-                                <strong>{commento.author}</strong>: {commento.comment}
+                                <strong>{commento.author}</strong>: {commento.comment} | {commento.rate}/5
                             </ListGroup.Item>
                         ))
                     ) : (
