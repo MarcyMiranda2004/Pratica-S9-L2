@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, ListGroup, Spinner, Alert } from 'react-bootstrap';
+import AddComment from './AddComment';
 
 
 class CommentArea extends Component {
@@ -56,7 +57,7 @@ class CommentArea extends Component {
                     {this.state.commenti.length > 0 ? (
                         this.state.commenti.map((commento, index) => (
                             <ListGroup.Item key={index}>
-                                <strong>{commento.author}</strong>: {commento.comment}
+                                <strong>{commento.author}</strong>: {commento.comment} | {commento.rate}/5
                             </ListGroup.Item>
                         ))
                     ) : (
