@@ -44,7 +44,6 @@ class CommentArea extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        // Verifica se l'ASIN è cambiato, e ricarica i commenti
         if (prevProps.asin !== this.props.asin) {
             this.setState({ isLoading: true }, () => {
                 this.getComments();
